@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html ng-app="app" ng-cloak>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="MobileOptimized" content="320" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="index, follow, noodp, noydir" />
+    <meta name="designer" content="kuzilab.com" />
+
+    <title>Avucat</title>
+
+
+    <!-- Angular Min JS -->
+    <script type="text/javascript" src="../assets/js/1.6.5-angular.min.js"></script>
+    <!-- Angular Min Route JS -->
+    <script type="text/javascript" src="../assets/js/1.6.5-angular-route.min.js"></script>
+    <!--Angular Message JS -->
+    <script type="text/javascript" src="../assets/js/1.6.5-angular-messages.min.js"></script>
+
+    <script type="text/javascript" src="../assets/js/1.6.5-angular-cookies.js"></script>
+
+    <!-- Google Maps Libraries -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu60gKZgBm8f0Rwhcv7lia2kHRR9_vR3o" type="text/javascript"></script>
+
+    <!--Services -->
+    <script type="text/javascript" src="../services/googleMapService.js"></script>
+    <script type="text/javascript" src="../services/passDataService.js"></script>
+    <script type="text/javascript" src="../services/crudDataService.js"></script>
+    <script type="text/javascript" src="../services/authDataService.js"></script>
+    <script type="text/javascript" src="../services/mockDataService.js"></script>
+
+    <!--Controllers -->
+    <script type="text/javascript" src="../controllers/MainPageCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/SearchCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawDetailCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawCertificatesCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawCommentsCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawEssaysCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawLoginCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawSignUpCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/LawVerificationCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/IndexCtrl.js"></script>
+
+    <!-- App JS -->
+    <script type="text/javascript" src="../app.js"></script>
+
+    <!-- Globe Helper-->
+    <script type="text/javascript" src="../assets/js/GlobeHelper.js"></script>
+
+    <!-- Theme Libraries -->
+    <link rel="shortcut icon" type="image/png" href="../assets/img/avucat-icon-32.png" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+    <link href="../assets/css/design.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+    <link href="../assets/css/toast.css" rel="stylesheet" type="text/css" charset="UTF-8">;
+
+
+    <script src="../assets/js/code.jquery-jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/poper.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/js.cookie.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/bootstrap-select.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/bootstrap-select-tr_TR.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/clipboard.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/table.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/bootstrap-slider.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/featherlight.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../assets/js/toast-tr.min.js" type="text/javascript" charset="UTF-8"></script>
+    <!--  <script src="../assets/js/design.js" type="text/javascript" charset="UTF-8"></script>-->
+    <script src="../assets/js/design2.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+
+<body>
+    <header role="banner" id="header">
+        <nav class="fixed-top like-intro">
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <a href="/">
+                        <figure class="my-0 header-logo">
+                            <img src="../assets/img/avucat.svg" height="35" />
+                        </figure>
+                    </a>
+                </div>
+
+                <ul class="navi-quest d-flex flex-row align-items-center fw-500">
+
+                    <li>
+                        <a class="list-item text-shadow" href="/avukat-arama">
+                            <i class="icons icon-magnifier"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <button class="list-item text-shadow" data-toggle="modal" data-target="#locationModal">DESTEK</button>
+                    </li>
+                    <li>
+                        <a class="list-item text-shadow" href="/avukat-giris-yap">
+                            <i class="icons icon-graduation d-inline d-md-none"></i>
+                            <span class="d-none d-md-inline"> AVUKAT MISIN?</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ********* Master Template **********   -->
+    <div ng-view></div>
+
+    <footer id="footer">
+        <div class="spots">
+            <div class="clearfix">
+                <div class="container">
+                    <div class="intro-spots font-normal">
+                        <div class="row">
+                            <div class="col-md-4 py-2 px-5 px-md-3">
+                                <div class="media">
+                                    <div class="spot-cart bg-orangeo rounded-circle text-center text-light mr-3">
+                                        <span class="icons icon-graduation"></span>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <p class="mb-0">Size en yakın avukatları, uzmanlık alanlarına göre listeleyin.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 py-2 px-5 px-md-3">
+                                <div class="media">
+                                    <div class="spot-cart bg-orangeo rounded-circle text-center text-light mr-3">
+                                        <span class="icons icon-calendar"></span>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <p class="mb-0">Dilediğiniz avukata kolayca ulaşın, randevu talebinde bulunun.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 py-2 px-5 px-md-3">
+                                <div class="media">
+                                    <div class="spot-cart bg-orangeo rounded-circle text-center text-light mr-3">
+                                        <span class="icons icon-check"></span>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <p class="mb-0">Alanında uzman avucatlardan profesyonel destek alın.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="footerLinks" class="pt-3 mt-5">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <img class="footer-logo d-block mx-auto" src="../assets/img/avucat.svg" height="35" />
+                                <div class="copyright mt-4">
+                                    <p class="text-light" style="text-align: center">
+                                        © 2004-2018 Avucat Tüm Hakları Saklıdır.
+                                    </p>
+                                    <p class="text-light" style="text-align: center">
+                                        Avucat.com bir KuziWorks iştirakıdır.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <nav class="nav flex-column" style="text-align: center">
+                                    <h5 class="text-light">Hızlı Bağlantılar</h5>
+                                    <a class="nav-link active" href="#">Anasayfa</a>
+                                    <a class="nav-link" href="#">Bize Ulaşın</a>
+                                    <a class="nav-link" href="#">Üyelik Sözleşmesi</a>
+                                    <a class="nav-link" href="#">Gizlilik Sözleşmesi</a>
+                                    <a class="nav-link" href="#">Hakkımızda</a>
+                                </nav>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <nav class="nav flex-column" style="text-align: center">
+                                    <h5 class="text-light">Popüler Branşlar</h5>
+                                    <a class="nav-link active" href="#">Boşanma Hukuku</a>
+                                    <a class="nav-link" href="#">Ceza Hukuku</a>
+                                    <a class="nav-link" href="#">İcra Hukuku</a>
+                                    <a class="nav-link" href="#">Miras Hukuku</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <p class="font-italic font-normal text-capitalize mt-4 sub-text">
+                            <small>
+                                Avucat.com avukat randevu ve destek platformudur. Site içerisinde bulunan bilgiler bilgilendirme amaçlıdır. Bu bilgilendirme
+                                kesinlikle avukatın vekilini hukuki amaçla savunması veya yönlendirmesi yerine geçmez.
+                            </small>
+                        </p>
+                        <!-- 
+                        <p class="font-italic font-normal text-capitalize mt-4 designedby">
+                            <small>
+                                Designed by
+                                <a href="http://www.onurboz.com/" target="_blank" title="Boz 360">
+                                    <img src="../assets/img/logo-boz-red-full-svg.svg" width="28" /> 360</a>
+                            </small>
+                        </p>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="locationModal"
+        ng-controller="IndexController as index">
+
+        <form name="Form" ng-submit="index.sendSupportMessage()">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width: 120%;height: 90%">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{profile.test}}</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <label for="NameSurname" style="margin-bottom: 10px">Ad Soyad</label>
+                        <input name="NameSurname" class="form-control font-normal" id="NameSurname" type="text" placeholder="Ad Soyad" ng-model="index.supportData.NameSurname"
+                            required />
+                        <p ng-hide="Form.NameSurname.$valid" class="invalid-feedback">Ad Soyad Giriniz !</p>
+                        <p ng-show="Form.NameSurname.$valid" class="valid-feedback">Ad Soyad Geçerli :)</p>
+
+
+                        <label for="Email">Email</label>
+                        <input class="form-control font-normal" id="Email" name="Email" type="email" placeholder="E-posta adresiniz" required ng-model="index.supportData.Email"
+                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
+                        <p ng-hide="Form.Email.$valid" class="invalid-feedback">Format Doğru Değil !</p>
+                        <p ng-show="Form.Email.$valid" class="valid-feedback">Email Geçerli :)</p>
+
+                        <label for="Phone">Telefon</label>
+                        <input class="form-control font-normal" name="Phone" id="Phone" type="phone" placeholder="5XX XXX XX XX" ng-model="index.supportData.Phone"
+                            autocomplete="tel" ng-pattern="/^[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}$/" required />
+                        <p ng-hide="Form.Phone.$valid" class="invalid-feedback">Format Doğru Değil !</p>
+                        <p ng-if="Form.Phone.$valid" class="valid-feedback">Telefon Geçerli :)</p>
+
+                        <label for="About">Destek Konusu</label>
+                        <textarea ng-model="index.supportData.Content" class="form-control font-normal" name="Content" id="About" rows="3" placeholder="Size nasıl yardımcı olabiliriz ?"
+                            required></textarea>
+                        <p ng-hide="Form.Content.$valid" class="invalid-feedback">Konu girinzi !</p>
+                        <p ng-show="Form.Content.$valid" class="valid-feedback">Konu Geçerli :)</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="index.sendSupportMessage()">Gönder</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Result Message -->
+    <div id="toast" class="message show" ng-hide="visible" ng-controller="IndexController">
+        <div class="toastInner" ng-style="setStyle()">
+            <div class="toastMessage">
+                {{message}}
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<style>
+    #gmaps {
+        width: 565px !important;
+        height: 400px !important;
+    }
+</style>
+
+
+<section id="main">
+    <article class="nw-ac-card-body">
+        <div class="container">
+            <div class="row d-flex mt-3 mt-lg-4 py-2">
+                <div class="col-lg-6 my-3 py-3">
+                    <div class="card ad-card">
+                        <div class="card-body">
+                            <div class="px-lg-5 px-md-4 px-sm-2 px-1 mt-2 pt-md-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3>Üye Olun</h3>
+                                </div>
+                                <form name="Form" ng-submit="signup.doSignUp()">
+                                    <div class="form-row pt-3">
+                                        <div class="col-sm-12 py-2">
+                                            <label for="formEmail">E-posta</label>
+                                            <input ng-model="signup.signupData.Email" name="Email" class="form-control form-control-lg" id="formEmail" type="email" placeholder="E-posta adresini giriniz"
+                                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required />
+
+                                            <p ng-hide="Form.Email.$valid" class="invalid-feedback">Format Doğru Değil!</p>
+                                            <p ng-show="Form.Email.$valid" class="valid-feedback">Email Geçerli :)</p>
+                                        </div>
+
+
+                                        <div class="col-sm-12 py-2">
+                                            <label for="formUzmanlikAlanlari">Uzmanlık Alanları</label>
+                                            <select id="formUzmanlikAlanlari" class="form-control-lg form-control " name="ExpertiseField" ng-model="signup.signupData.ExpertiseFields"
+                                                title="Uzmanlık seçiniz" data-size="6" data-max-options="3" data-selected-text-format="count > 2"
+                                                ng-change="signup.getExpertiseFields()" multiple required>
+                                                <option ng-repeat="expertise in expertises track by $index" ng-value="expertise.id">{{expertise.name}}</option>
+                                            </select>
+                                            <p ng-hide="Form.ExpertiseField.$valid" class="invalid-feedback">Uzmanlık Giriniz!</p>
+                                            <p ng-show="Form.ExpertiseField.$valid" class="valid-feedback">Uzmanlık Geçerli :)</p>
+                                        </div>
+
+
+                                        <div class="col-sm-12 py-2">
+                                            <label for="formAdSoyad">Ad Soyad</label>
+                                            <input ng-model="signup.signupData.NameSurname" name="NameSurname" class="form-control form-control-lg" id="formAdSoyad"
+                                                type="text" placeholder="Ad Soyad" value="Hakan Kuzudisli" required/>
+                                            <p ng-hide="Form.NameSurname.$valid" class="invalid-feedback">Ad Soyad Giriniz!</p>
+                                            <p ng-show="Form.NameSurname.$valid" class="valid-feedback">Ad Soyad Geçerli :)</p>
+                                        </div>
+
+
+                                        <div class="col-sm-12 py-2">
+                                            <label for="formTelefon">Telefon</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text fw-600">+90</span>
+                                                </div>
+                                                <input ng-model="signup.signupData.Phone" class="form-control form-control-lg" name="Phone" id="formTelefon" type="phone"
+                                                    placeholder="5XX XXX XX XX" ng-pattern="/^[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}$/"
+                                                    required />
+                                            </div>
+                                            <p ng-hide="Form.Phone.$valid" class="invalid-feedback">Format Doğru Değil!</p>
+                                            <p ng-if="Form.Phone.$valid" class="valid-feedback">Telefon Geçerli :)</p>
+                                        </div>
+
+                                        <div class="col-sm-12 py-2">
+                                            <label for="formSifre">Şifre</label>
+                                            <input class="form-control form-control-lg" name="Password" id="formSifre" type="password" placeholder="Şifre" ng-model="signup.signupData.PasswordPlain"
+                                                required/>
+                                            <p ng-hide="Form.Password.$valid" class="invalid-feedback">Şifre Giriniz!</p>
+                                        </div>
+
+                                        <div class="col-sm-12 py-2">
+                                            <label for="formSifreTekrar">Şifre Tekrar</label>
+                                            <input ng-model="signup.RePassword" name="RePassword" class="form-control form-control-lg" id="formSifreTekrar" type="password"
+                                                placeholder="Şifre Tekrar" required ng-pattern="signup.signupData.PasswordPlain"
+                                            />
+                                            <p ng-hide="Form.RePassword.$valid" class="invalid-feedback">Şifreler Eşleşmiyor!</p>
+                                            <p ng-show="Form.RePassword.$valid" class="valid-feedback">Şifre Geçerli :)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox mt-3">
+                                        <input ng-model="signup.Deal" name="Deal" type="checkbox" class="custom-control-input" id="formAccept" required />
+                                        <label class="custom-control-label" for="formAccept">Kullanıcı sözleşmesini okudum ve kabul ediyorum</label>
+                                        <p ng-hide="Form.Deal.$valid" class="invalid-feedback">Kullanıcı Sözleşmesi kabulu !</p>
+                                        <p ng-show="Form.Deal.$valid" class="valid-feedback">Sözleşme kabul edildi :)</p>
+                                    </div>
+
+
+
+                                    <div class="form-row pt-4 d-flex justify-content-between align-items-center">
+                                        <div class="py-2">
+                                            <button type="button" class="btn btn-light border border-black btn-lg" type="button" data-toggle="modal" data-target="#locationModal">
+                                                <span class="glyphicon glyphicon-map-marker"></span> Konum Al</button>
+                                        </div>
+                                        <div class="py-2">
+                                            <button type="submit" class="btn btn-dark btn-lg">Kaydı Tamamla</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="text-center pt-3">
+                                        <p class="font-normal text-right">
+                                            <small>Zaten üye misin?
+                                                <a class="form-link" href="/avukat-giris-yap">Giriş Yapın.</a>
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12 py-2">
+                                        <p class="font-normal text-left">
+                                            <small>{{signup.signupData.LocationAddress}}</small>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-3 pt-5 d-none d-lg-block">
+                    <img src="../assets/img/register-bg.png" class="img-fluid register-bg-img" />
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="locationModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 120%;height: 90%">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{profile.test}}</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="gmaps"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="signup.ok()">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Result Message -->
+<div id="toast" class="message show" ng-hide="visible">
+    <div class="toastInner" ng-style="setStyle()">
+        <div class="toastMessage">
+            {{message}}
+        </div>
+    </div>
+</div>

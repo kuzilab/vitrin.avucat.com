@@ -1,0 +1,195 @@
+<style>
+    #gmaps {
+        height: 100%;
+        width: 100%;
+    }
+
+    #footer {
+        display: none;
+    }
+</style>
+
+
+<div id="searchMapWrapper">
+
+    <div id="searchMapWrapperLeftSide">
+        <div id="gmaps"></div>
+        <form class="searchForm header-form searcFormMap" name="Form" ng-submit="search.SearchLawyers()">
+            <div>
+                <div class="searcFormHeader">
+                    <ul class="nav nav-tabs fw-700" role="tablist" id="searchFormTab">
+                        <li>
+                            <span class="nav-link fw-600 text-shadow active" data-toggle="tab" href="#avukatAra">AVUKAT BUL</span>
+                        </li>
+                        <li>
+                            <span class="nav-link fw-600 text-shadow" data-toggle="tab" href="#buroAra">BÜRO BUL</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="searcFormBody tab-content">
+                    <div class="tab-pane show active" id="avukatAra">
+                        <div class="d-flex flex-column flex-md-row input-group">
+
+                            <select id="searchAvukatFormIl" class="selectpicker flex-md-fill form-control form-control-lg" title="Şehir Seçiniz" data-live-search="true"
+                                data-header="Şehir Seçenekleri" data-size="5" ng-model="search.searchData.CityName" name="FormIl">
+                                <option disabled="disabled">Şehirler Yüklenemedi</option>
+                            </select>
+
+                            <select id="searchAvukatFormIlce" class="selectpicker flex-md-fill form-control form-control-lg" title="İlçe seçiniz" data-size="6"
+                                ng-model="search.searchData.StateName" name="FormIlce">
+                                <option disabled="disabled">Önce Şehir Seçiniz</option>
+                            </select>
+
+                            <select id="searchAvukatFormUzmanlık" class="selectpicker flex-md-fill form-control form-control-lg" title="Uzmanlık seçiniz"
+                                data-size="6" data-max-options="3" data-selected-text-format="count > 2" multiple ng-model="search.searchData.ExpertiseFields">
+                                <option>Ceza Hukuku</option>
+                                <option>Suç Hukuku</option>
+                                <option>Avrupa Hukuku</option>
+                                <option>Medeni Hukuk</option>
+                                <option>İnsan Hakları Mahkemesi</option>
+                                <option>Hayvan Hakları Mahkemesi</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-warning searchFormSubmit btn-md-block" type="submit">
+                                    <span class="icons icon-magnifier"></span>ARA</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="buroAra">
+                        <div class="d-flex flex-column flex-md-row input-group">
+                            <input id="searchBuroFormKeyword" type="search" class="form-control form-control-lg" placeholder="Büro ismi giriniz" x-webkit-speech
+                                ng-model="search.searchData.BureauCityName" />
+
+                            <select id="searchAvukatFormIl" class="selectpicker flex-md-fill form-control form-control-lg" title="Şehir Seçiniz" data-live-search="true"
+                                data-header="Şehir Seçenekleri" data-size="5" ng-model="search.searchData.BureauStateName">
+                                <option disabled="disabled">Şehirler Yüklenemedi</option>
+                            </select>
+
+                            <select id="searchAvukatFormIlce" class="selectpicker flex-md-fill form-control form-control-lg" title="İlçe seçiniz" data-size="6"
+                                ng-model="search.searchData.StateName">
+                                <option disabled="disabled">Önce Şehir Seçiniz</option>
+                            </select>
+
+                            <div class="input-group-append">
+                                <button class="btn btn-warning searchFormSubmit btn-md-block" type="submit">
+                                    <span class="icons icon-magnifier"></span>ARA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div id="searchMapWrapperRightSide">
+        <div id="searchMapWrapperRightSideHeader">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                <a ng-click="search.SortAlpha()" class="btn btn-light active">Alfabetik</a>
+                <a href="search.SortScore()" class="btn btn-light">En Yüksek Skor</a>
+            </div>
+        </div>
+        <div id="searchMapWrapperRightSideBody">
+            <ul class="map-list list-unstyled" id="lawList">
+
+                <li ng-repeat="item in lawyers track by $index" data-ng-class="{'active': (item.class == 'active')}" ng-click="search.Selected(item)">
+                    <div class="card ac-card as-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-start align-items-center ofh text-ellipsis">
+                                <div class="pb-2 pt-1">
+                                    <div class="ac-picture-bar score" data-toggle="tooltip" title="SKOR: 48.123%">
+                                        <img class="img-fluid" src="{{item.ProfilePicPath}}" />
+                                        <div class="scoretable">
+                                            <span style="height:48.123%;"></span>
+                                            <ul class="bubbles">
+                                                <li>
+                                                    <span class="bubble bubble-1"></span>
+                                                </li>
+                                                <li>
+                                                    <span class="bubble bubble-2"></span>
+                                                </li>
+                                                <li>
+                                                    <span class="bubble bubble-3"></span>
+                                                </li>
+                                                <li>
+                                                    <span class="bubble bubble-4"></span>
+                                                </li>
+                                                <li>
+                                                    <span class="bubble bubble-5"></span>
+                                                </li>
+                                                <li>
+                                                    <span class="bubble bubble-6"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-nowrap ofh text-ellipsis ml-3">
+                                    <h5 class="card-title approved my-0 ofh text-ellipsis">
+                                        <small class="icons icon-check" data-toggle="tooltip" title="Onaylı Profil"></small>
+                                        <span title="Sezer Temel">{{item.NameSurname}}</span>
+                                    </h5>
+                                    <div class="list-tags font-normal list-inline text-nowrap text-ellipsis ofh">
+                                        {{item.BureauName}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ac-card-contact ss-card">
+                                <a class="ac-card-phone acx-1 d-flex align-items-center justify-content-around" href="{{item.telFormat}}" rel="nofollow">
+                                    <span class="icons icon-call-out"></span>
+                                    <div class="d-none d-lg-inline">
+                                        <span>{{item.telBoard}}</span>
+                                        <span data-clipboard-text="{{item.telBoard}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                            data-tooltip-message="Kopyalandı!"></span>
+                                    </div>
+                                </a>
+                                <a class="ac-card-profile acx-3 d-flex align-items-center justify-content-around" href="/avukat-profil/{{item.RoutePath}}"
+                                    target="_blank">
+                                    <span class="icons icon-arrow-right-circle"></span>
+                                    <span class="d-none d-lg-inline">
+                                        <span>Profil</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konum Seçiniz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="for-maker mb-4">
+                    <!-- BURAYA SEÇİLEN KONUM ADI INDEX EDİLECEK id 'i sen verebilirsin -->
+                </p>
+                <div class="for-map">
+                    <!-- BURAYA HARİTA INDEX EDİLECEK id 'i sen verebilirsin -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Haritayı Güncelle</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Result Message -->
+<div id="toast" class="message show" ng-hide="visible">
+    <div class="toastInner" ng-style="setStyle()">
+        <div class="toastMessage">
+            {{message}}
+        </div>
+    </div>
+</div>

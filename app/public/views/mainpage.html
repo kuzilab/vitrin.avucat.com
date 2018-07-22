@@ -1,0 +1,235 @@
+<section class="main-video">
+    <img class="poster" src="../assets/video/poster.jpg" />
+    <video autoplay loop muted class="fullscreen-bg__video" poster="../assets/video/poster.jpg">
+        <source src="../assets/video/intro.mp4" type="video/mp4"></source>
+        <source src="..//assets/video/intro.webm" type="video/webm"></source>
+        <source src="../assets/video/intro.ogv" type="video/ogg"></source>
+    </video>
+    <div class="dim"></div>
+    <aside>
+        <div id="aside">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div>
+                            <div class="intro-text pt-md-3">
+                                <h1 class="text-center text-shadow">
+                                    <span class="fw-300 d-block font-normal text-shadow">
+                                        <img class="img-fluid" src="../assets/img/avucat-icon-250.png" width="60" alt="Avucat Icon" />
+                                        <span>Avukat</span> veya Büro bulun,</span>
+                                    <small class="fw-700 d-block pt-2 text-shadow">
+                                        <span>Online Randevu veya Destek alın.</span>
+                                    </small>
+                                </h1>
+                            </div>
+                            <form class="searchForm header-form pt-md-4" ng-submit="mainpage.SearchLawyers()" name="Form">
+                                <div>
+                                    <div class="searcFormHeader">
+                                        <ul class="nav nav-tabs fw-700" role="tablist" id="searchFormTab">
+                                            <li>
+                                                <span class="nav-link fw-600 text-shadow active" data-toggle="tab" href="#avukatAra">AVUKAT BUL</span>
+                                            </li>
+                                            <li>
+                                                <span class="nav-link fw-600 text-shadow" data-toggle="tab" href="#buroAra">BÜRO BUL</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="searcFormBody tab-content">
+                                        <div class="tab-pane show active" id="avukatAra">
+                                            <div class="d-flex flex-column flex-md-row input-group">
+
+                                                <select id="searchAvukatFormIl" class="selectpicker flex-sm-fill form-control form-control-lg" title="Şehir Seçiniz" data-container="body"
+                                                    data-live-search="true" data-header="Şehir Seçenekleri" name="FormIl" ng-required="required"
+                                                    ng-model="mainpage.mainData.CityName">
+                                                </select>
+
+                                                <select id="searchAvukatFormIlce" class="selectpicker flex-sm-fill form-control form-control-lg" title="İlçe seçiniz" data-container="body"
+                                                    name="FormIlce" ng-required="required" ng-model="mainpage.mainData.StateName">
+                                                    <option disabled="disabled">Önce Şehir Seçiniz</option>
+                                                </select>
+
+                                                <select id="searchAvukatFormUzmanlık" class="selectpicker flex-sm-fill form-control form-control-lg" title="Uzmanlık seçiniz"
+                                                    data-container="body" data-size="6" data-max-options="3" name="FormUzmanlik"
+                                                    data-selected-text-format="count > 2" ng-required="required" ng-model="mainpage.mainData.ExpertiseFields"
+                                                    multiple>
+                                                    <option ng-value="1">Aile Hukuku</option>
+                                                    <option ng-value="2">Anayasa Hukuku</option>
+                                                    <option ng-value="3">AB Hukuku</option>
+                                                    <option ng-value="4">Avukatlık Hukuku</option>
+                                                    <option ng-value="5">Bankacılık Hukuku</option>
+                                                    <option ng-value="6">Basın Hukuku</option>
+                                                </select>
+
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-warning searchFormSubmit btn-sm-block" type="submit">
+                                                        <span class="icons icon-magnifier"></span> ARA</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="buroAra">
+                                            <div class="d-flex flex-column flex-md-row input-group">
+                                                <input id="searchBuroFormKeyword" type="search" class="form-control form-control-lg" placeholder="Büro ismi giriniz" x-webkit-speech
+                                                    name="FormBureauName" ng-required="required" ng-model="mainpage.mainData.BureauName"
+                                                />
+
+                                                <select id="searchAvukatFormIl" class="selectpicker flex-sm-fill form-control form-control-lg" title="Şehir Seçiniz" data-container="body"
+                                                    data-live-search="true" name="FormBureauIl" ng-model="mainpage.mainData.BureauCityName"
+                                                    data-header="Şehir Seçenekleri" ng-required="required">
+                                                </select>
+
+                                                <select id="searchAvukatFormIlce" ng-model="mainpage.mainData.BureauStateName" class="selectpicker flex-sm-fill form-control form-control-lg"
+                                                    title="İlçe seçiniz" data-container="body" name="FormBureauIlce" data-size="6"
+                                                    ng-model="mainpage.mainData.BureauStateName" ng-required="required">
+                                                    <option disabled="disabled">Önce Şehir Seçiniz</option>
+                                                </select>
+
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-warning searchFormSubmit btn-sm-block" type="submit">
+                                                        <span class="icons icon-magnifier"></span>ARA</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="popular-branches my-2">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <span class="nav-link fw-300">
+                                                    Popüler branşlar :
+                                                </span>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#hukuk">
+                                                    Boşanma Hukuku
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#hukuk">
+                                                    Ceza Hukuku
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#hukuk">
+                                                    İcra Hukuku
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#hukuk">
+                                                    Miras Hukuku
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intro-spots font-normal">
+                    <div class="row">
+                        <div class="col-md-4 py-2 px-5 px-md-3">
+                            <div class="media">
+                                <div class="spot-cart bg-orangeo rounded-circle text-center text-light mr-3">
+                                    <span class="icons icon-graduation"></span>
+                                </div>
+                                <div class="media-body align-self-center">
+                                    <p class="mb-0">Size en yakın avukatları, uzmanlık alanlarına göre listeleyin.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 py-2 px-5 px-md-3">
+                            <div class="media">
+                                <div class="spot-cart bg-orangeo rounded-circle text-center text-light mr-3">
+                                    <span class="icons icon-calendar"></span>
+                                </div>
+                                <div class="media-body align-self-center">
+                                    <p class="mb-0">Dilediğiniz avukata kolayca ulaşın, randevu talebinde bulunun.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 py-2 px-5 px-md-3">
+                            <div class="media">
+                                <div class="spot-cart bg-orangeo rounded-circle text-center text-light mr-3">
+                                    <span class="icons icon-check"></span>
+                                </div>
+                                <div class="media-body align-self-center">
+                                    <p class="mb-0">Alanında uzman avucatlardan profesyonel destek alın.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <div class="intro-seperator"></div>
+</section>
+<section id="main">
+    <article class="nw-ac-card-body">
+        <div class="container">
+
+            <h3 class="text-center d-block px-4 py-3 bg-white rounded mx-auto my-0 mb-4">En Yeni Avucatlar</h3>
+
+            <div class="row d-flex align-items-center">
+
+                <div class="col-md-6 col-lg-4 my-3" ng-repeat="item in lawyers track by $index">
+                    <div class="card ac-card">
+                        <div class="card-body">
+                            <div>
+                                <div class="ac-picture-bar score" data-toggle="tooltip" title="SKOR: 28.123%">
+                                    <img class="img-fluid" src="{{item.ProfilePicPath}}" />
+                                    <div class="scoretable">
+                                        <span style="height:28.123%;"></span>
+                                        <ul class="bubbles">
+                                            <li>
+                                                <span class="bubble bubble-1"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-2"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-3"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-4"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-5"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-6"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="card-title approved text-center mt-3">
+                                <small class="icons icon-check" data-toggle="tooltip" title="Onaylı Profil"></small>
+                                <span>{{item.NameSurname}}</span>
+                            </h5>
+                            <ul class="list-group list-group-flush mb-3 text-capitalize font-normal">
+                                <li class="list-group-item" ng-repeat="field in item.FieldTextList">
+                                    <small class="icons icon-badge"></small> {{field}}</li>
+
+                            </ul>
+                            <p class="card-text font-normal font-italic text-muted">{{item.Biography}}</p>
+                            <a href="/avukat-profil/{{item.RoutePath}}" class="card-link" style="float:right;">Profil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<!-- Result Message -->
+<div id="toast" class="message show" ng-hide="visible">
+    <div class="toastInner" ng-style="setStyle()">
+        <div class="toastMessage">
+            {{message}}
+        </div>
+    </div>
+</div>

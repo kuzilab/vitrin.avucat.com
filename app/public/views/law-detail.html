@@ -1,0 +1,330 @@
+<style>
+    #gmaps {
+        width: 500px;
+        height: 300px;
+    }
+
+    .embed-responsive-4by3::before {
+
+        padding-top: 0px;
+    }
+
+    .pb-3,
+    .py-3 {
+        padding-bottom: 0px;
+    }
+</style>
+
+<section id="main">
+    <article class="nw-ac-card-body">
+        <div class="container">
+            <div class="row d-flex align-items-center mt-md-4 pt-2">
+
+                <div class="col-md-12 col-lg-12 my-3">
+                    <div class="card ac-card ab-card">
+                        <div class="card-body">
+
+                            <div class="badges">
+                                <span class="icons icon-clock" data-toggle="tooltip" title="Tam Zamanında"></span>
+                                <a href="/" class="icons icon-home" title="Anasayfaya Dön">
+
+                                </a>
+                            </div>
+
+
+
+                            <div>
+                                <div class="ac-picture-bar score" data-toggle="tooltip" title="SKOR: 28.123%">
+                                    <img class="img-fluid" src="{{lawyer.ProfilePicPath}}" />
+                                    <div class="scoretable">
+                                        <span style="height:28.123%;"></span>
+                                        <ul class="bubbles">
+                                            <li>
+                                                <span class="bubble bubble-1"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-2"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-3"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-4"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-5"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-6"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="card-title approved text-center mt-4 pt-2">
+                                <small class="icons icon-check" data-toggle="tooltip" title="Onaylı Profil"></small>
+                                <span>{{lawyer.NameSurname}}</span>
+                            </h3>
+
+                            <div class="pt-2 px-lg-5 px-md-4 px-sm-2 px-1 pb-3">
+                                <p class="card-text font-normal font-italic text-muted blockquote fw-400">
+                                    {{lawyer.Biography}}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="ac-card-contact">
+                            <a class="ac-card-phone acx-1 d-flex align-items-center justify-content-around" rel="nofollow" id="telFormat" href="{{lawyer.telFormat}}">
+                                <span class="icons icon-call-out"></span>
+                                <div class="d-none d-lg-inline">
+                                    <span>+90 {{lawyer.Phone}}</span>
+                                    <span data-clipboard-text="{{lawyer.telBoard}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                        data-tooltip-message="Kopyalandı!"></span>
+                                </div>
+                            </a>
+                            <a class="ac-card-email acx-2 d-flex align-items-center justify-content-around" href="{{lawyer.EmailFormat}}">
+                                <span class="icons icon-envelope-letter"></span>
+                                <span class="d-none d-lg-inline">
+                                    <span>{{lawyer.Email}}</span>
+                                    <span data-clipboard-text="{{lawyer.Email}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                        data-tooltip-message="Kopyalandı!"></span>
+                                </span>
+                            </a>
+                            <a class="ac-card-location acx-3 d-flex align-items-center justify-content-around smoothscroll" href="#ac-card-location">
+                                <span class="icons icon-location-pin"></span>
+                                <span class="d-none d-lg-inline">
+                                    <span>Konum Bilgileri</span>
+                                    <span data-clipboard-text="{{lawyer.LatLng}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                        data-tooltip-message="Kopyalandı!"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12 col-lg-12 my-3 pt-3">
+
+                    <div class="card ad-card">
+                        <div class="card-header ad-card-header">
+                            <ul class="nav nav-tabs card-header-tabs nav-fill ad-card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/avukat-profil/{{lawyer.RoutePath}}">
+                                        <span class="icons icon-user d-inline d-md-none d-lg-inline"></span>
+                                        <span class="d-none d-md-inline">Profil</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/avukat-profil-sertifikalar/{{lawyer.RoutePath}}">
+                                        <span class="icons icon-docs d-inline d-md-none d-lg-inline"></span>
+                                        <span class="d-none d-md-inline">Sertifikalar</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/avukat-profil-yorumlar/{{lawyer.RoutePath}}">
+                                        <span class="icons icon-bubble d-inline d-md-none d-lg-inline"></span>
+                                        <span class="d-none d-md-inline">Yorumlar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="px-lg-5 px-md-4 px-sm-2 px-1 mt-4 pt-md-3">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h5 class="card-header ad-card-header-sub">Uzmanlık Alanları</h5>
+
+                                        <ul class="list-group list-group-flush mb-5 text-capitalize font-normal px-md-4">
+                                            <li class="list-group-item" ng-repeat="item in lawyer.FieldTextList">
+                                                <small class="icons icon-badge"></small> {{item}}</li>
+
+                                        </ul>
+
+                                        <h5 class="card-header ad-card-header-sub">Kişisel Bilgiler</h5>
+
+                                        <ul class="list-group list-group-flush mb-5 font-normal px-md-4">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-user"></small>
+                                                    <span class="d-none d-md-inline"> Adı Soyadı</span>
+                                                </span>
+                                                <span>{{lawyer.NameSurname}}</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-energy"></small>
+                                                    <span class="d-none d-md-inline"> Toplam Tecrübe</span>
+                                                </span>
+                                                <span>{{lawyer.ExperienceYear}} Yıl</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-globe"></small>
+                                                    <span class="d-none d-md-inline"> İnternet Sitesi</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">{{lawyer.UserWebName}}</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-social-facebook"></small>
+                                                    <span class="d-none d-md-inline"> Facebook Profili</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">/avukat_ahmetdemir</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-social-twitter"></small>
+                                                    <span class="d-none d-md-inline"> Twitter Profili</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">@avukatAdemir</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-social-instagram"></small>
+                                                    <span class="d-none d-md-inline"> Instagram Profili</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">@avukatAdemir</a>
+                                                </span>
+                                            </li>
+                                        </ul>
+
+                                        <h5 class="card-header ad-card-header-sub">Okullar</h5>
+
+                                        <ul class="list-group my-3 font-normal px-md-4">
+                                            <li class="list-group-item d-flex justify-content-between border-top">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-graduation"></small>
+                                                    <span> Lisans</span>
+                                                </span>
+                                                <span class="fw-600">
+                                                    {{lawyer.LicenceSchoolDate}}
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item px-4">
+                                                <span>{{lawyer.LicenceSchoolName}}</span>
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group mb-3 font-normal px-md-4">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-graduation"></small>
+                                                    <span> Yüksek Lisans</span>
+                                                </span>
+                                                <span class="fw-600">
+                                                    {{lawyer.HighLicenceSchoolDate}}
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item px-4">
+                                                <span>{{lawyer.HighLicenceSchoolName}}</span>
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group mb-3 font-normal px-md-4">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-graduation"></small>
+                                                    <span> Doktora</span>
+                                                </span>
+                                                <span class="fw-600">
+                                                    {{lawyer.PostLicenceSchoolDate}}
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item px-4">
+                                                <span>{{lawyer.PostLicenceSchoolName}}</span>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <h5 class="card-header ad-card-header-sub" id="ac-card-location">Konum</h5>
+
+                                        <div class="px-md-4 mb-5">
+                                            <div class="embed-responsive embed-responsive-4by3 mb-3 pb-3" style="padding-top:0px!important">
+                                                <div id="gmaps"></div>
+                                            </div>
+
+                                        </div>
+
+                                        <h5 class="card-header ad-card-header-sub">Büro Bilgileri</h5>
+
+                                        <ul class="list-group list-group-flush mb-3 font-normal px-md-4">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-briefcase"></small>
+                                                    <span class="d-none d-md-inline"> Adı</span>
+                                                </span>
+                                                <span>{{lawyer.BureauName}}</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-globe"></small>
+                                                    <span class="d-none d-md-inline"> İnternet Sitesi</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">{{lawyer.BureauWebName}}</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-social-facebook"></small>
+                                                    <span class="d-none d-md-inline"> Facebook Profili</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">/asis_hukuk</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-social-twitter"></small>
+                                                    <span class="d-none d-md-inline"> Twitter Profili</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">@asisHukuk</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-social-instagram"></small>
+                                                    <span class="d-none d-md-inline"> Instagram Profili</span>
+                                                </span>
+                                                <span>
+                                                    <a href="#">@asis_hukuk</a>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="fw-600">
+                                                    <small class="icons icon-location-pin"></small>
+                                                    <span> Adresi</span>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span class="text-muted font-italic">
+                                                    {{lawyer.Address}}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

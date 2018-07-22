@@ -1,0 +1,19 @@
+[
+
+    {
+        "id": 1,
+        "text": "Size en yakın avukatları, uzmanlık alanlarına göre listeleyin.",
+        "icon": "icons icon-graduation"
+    },
+
+    {
+        "id": 2,
+        "text": "Dilediğiniz avukata kolayca ulaşın, randevu talebinde bulunun.",
+        "icon": "icons icon-calendar"
+    },
+    {
+        "id": 3,
+        "text": "Alanında uzman avucatlardan profesyonel destek alın.",
+        "icon": "icons icon-check"
+    }
+]

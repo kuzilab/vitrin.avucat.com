@@ -1,0 +1,292 @@
+<style>
+    #gmaps {
+        width: 500px;
+        height: 300px;
+    }
+
+    .embed-responsive-4by3::before {
+
+        padding-top: 0px;
+    }
+
+    .pb-3,
+    .py-3 {
+        padding-bottom: 0px;
+    }
+</style>
+
+<section id="main">
+    <article class="nw-ac-card-body">
+        <div class="container">
+            <div class="row d-flex align-items-center mt-md-4 pt-2">
+
+                <div class="col-md-12 col-lg-12 my-3">
+                    <div class="card ac-card ab-card">
+                        <div class="card-body">
+
+                            <div class="badges">
+                                <span class="icons icon-clock" data-toggle="tooltip" title="Tam Zamanında"></span>
+                            </div>
+
+                            <div>
+                                <div class="ac-picture-bar score" data-toggle="tooltip" title="SKOR: 28.123%">
+                                    <img class="img-fluid" src="{{lawyer.ProfilePicPath}}" />
+                                    <div class="scoretable">
+                                        <span style="height:28.123%;"></span>
+                                        <ul class="bubbles">
+                                            <li>
+                                                <span class="bubble bubble-1"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-2"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-3"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-4"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-5"></span>
+                                            </li>
+                                            <li>
+                                                <span class="bubble bubble-6"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="card-title approved text-center mt-4 pt-2">
+                                <small class="icons icon-check" data-toggle="tooltip" title="Onaylı Profil"></small>
+                                <span>{{lawyer.NameSurname}}</span>
+                            </h3>
+
+                            <div class="pt-2 px-lg-5 px-md-4 px-sm-2 px-1 pb-3">
+                                <p class="card-text font-normal font-italic text-muted blockquote fw-400">
+                                    {{lawyer.Biography}}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="ac-card-contact">
+                            <a class="ac-card-phone acx-1 d-flex align-items-center justify-content-around" rel="nofollow" id="telFormat" href="{{lawyer.telFormat}}">
+                                <span class="icons icon-call-out"></span>
+                                <div class="d-none d-lg-inline">
+                                    <span>+90 {{lawyer.Phone}}</span>
+                                    <span data-clipboard-text="{{lawyer.telBoard}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                        data-tooltip-message="Kopyalandı!"></span>
+                                </div>
+                            </a>
+                            <a class="ac-card-email acx-2 d-flex align-items-center justify-content-around" href="{{lawyer.EmailFormat}}">
+                                <span class="icons icon-envelope-letter"></span>
+                                <span class="d-none d-lg-inline">
+                                    <span>{{lawyer.Email}}</span>
+                                    <span data-clipboard-text="{{lawyer.Email}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                        data-tooltip-message="Kopyalandı!"></span>
+                                </span>
+                            </a>
+                            <a class="ac-card-location acx-3 d-flex align-items-center justify-content-around smoothscroll" href="#ac-card-location">
+                                <span class="icons icon-location-pin"></span>
+                                <span class="d-none d-lg-inline">
+                                    <span>Konum Bilgileri</span>
+                                    <span data-clipboard-text="{{lawyer.LatLng}}" class="icons icon-docs copy-clipboard" data-toggle="tooltip" title="Panoya Kopyala"
+                                        data-tooltip-message="Kopyalandı!"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-12 my-3 pt-3">
+                    <div class="card ad-card">
+                        <div class="card-header ad-card-header">
+                            <ul class="nav nav-tabs card-header-tabs nav-fill ad-card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/avukat-profil/{{lawyer.RoutePath}}">
+                                        <span class="icons icon-user d-inline d-md-none d-lg-inline"></span>
+                                        <span class="d-none d-md-inline">Profil</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/avukat-profil-sertifikalar/{{lawyer.RoutePath}}">
+                                        <span class="icons icon-docs d-inline d-md-none d-lg-inline"></span>
+                                        <span class="d-none d-md-inline">Sertifikalar</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/avukat-profil-yorumlar/{{lawyer.RoutePath}}">
+                                        <span class="icons icon-bubble d-inline d-md-none d-lg-inline"></span>
+                                        <span class="d-none d-md-inline">Yorumlar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="px-lg-5 px-md-4 px-sm-2 px-1 pt-2">
+                                <div class="d-block">
+                                    <div class="clearfix">
+                                        <div class="mx-auto text-center">
+                                            <a class="btn btn-link h4 font-normal" data-toggle="collapse" href="#formYorumEkle">Yorum Ekle</a>
+                                        </div>
+
+                                        <form class="collapse" id="formYorumEkle" ng-submit="SaveComment()" name="Form">
+                                            <div class="form-row pt-1">
+                                                <div class="col-md-6 py-2">
+                                                    <label for="formYorumEkleAdiSoyadi">Adı Soyadı</label>
+                                                    <input ng-model="comments.commentData.WhoComment" class="form-control font-normal" type="text" placeholder="Adınız Soyadınız"
+                                                        required="required" id="WhoComment" />
+                                                </div>
+
+                                                <div class="col-md-6 py-2">
+                                                    <label for="formYorumEkleEmail">E-posta</label>
+                                                    <input ng-model="comments.commentData.WhoEmail" class="form-control font-normal" type="email" placeholder="E-posta Adresiniz"
+                                                        required="required" id="WhoEmail" />
+                                                </div>
+                                                <div class="col-12 py-2">
+                                                    <label for="formYorumEkleAciklama">Açıklama</label>
+                                                    <textarea ng-model="comments.commentData.CommentContent" class="form-control font-normal" rows="3" placeholder="Yorumunuzu giriniz"
+                                                        id="CommentContent"></textarea>
+                                                </div>
+                                                <div class="col-12 py-2">
+                                                    <div class="clearfix">
+                                                        <label class="d-block py-2">Avucat'ın konuyla alakalı deneyimi nasıl ?</label>
+                                                        <div class="pl-4">
+                                                            <input ng-model="comments.commentData.UserExperince" class="slider" name="degerlendirme1" type="text" data-slider-min="0"
+                                                                data-slider-max="100" data-slider-step="5" data-slider-value="0"
+                                                                id="Experience" />
+                                                            <span class="slider-currentVal fw-700 pl-2 ml-2">0</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 py-2">
+                                                    <div class="clearfix">
+                                                        <label class="d-block py-2">Avucat'ın sizinle ilgilenmesi nasıl ?</label>
+                                                        <div class="pl-4">
+                                                            <input ng-model="comments.commentData.UserNetwork" class="slider" name="degerlendirme2" type="text" data-slider-min="0" data-slider-max="100"
+                                                                data-slider-step="5" data-slider-value="0" id="Network" />
+                                                            <span class="slider-currentVal fw-700 pl-2 ml-2">0</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 py-2">
+                                                    <div class="clearfix">
+                                                        <label class="d-block py-2">Avucat'ın konuya yaklaşımı nasıl ?</label>
+                                                        <div class="pl-4">
+                                                            <input ng-model="comments.commentData.UserSpeed" class="slider" name="degerlendirme2" type="text" data-slider-min="0" data-slider-max="100"
+                                                                data-slider-step="5" data-slider-value="0" id="Speed" />
+                                                            <span class="slider-currentVal fw-700 pl-2 ml-2">0</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <button type="submit" class="btn btn-dark mt-5">Gönder</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-12">
+                    <div class="my-3 pt-1 d-flex align-items-center row">
+                        <div class="col-md-6 col-lg-4 my-3" ng-repeat="comment in comments">
+                            <div class="card ac-card aa-card">
+                                <div class="card-header d-flex flex-row-reverse align-items-center font-normal">
+                                    <img class="user-picture border border-white shadow rounded-circle mx-3" src="../assets/img/user.png" width="32" height="32"
+                                    />
+                                    <span>{{comment.WhoComment}}</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="blockquote mb-0 p-3">
+
+                                        <p>{{comment.CommentContent}}</p>
+
+                                        <div class="blockquote-footer">
+                                            <small class="text-muted font-normal">
+                                                Eklendi:
+                                                <cite title="{{comment.SavedDate}}">
+                                                    <strong>{{comment.SavedDate}}</strong>
+                                                </cite>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <h6>Hızlı cevap</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" ng-style="SetStyleExperience(comment)">{{comment.UserExperince}}%</div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h6>İlgi alaka</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" ng-style="SetStyleNetwork(comment)">{{comment.UserNetwork}}%</div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h6>Deneyim</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" ng-style="SetStyleSpeed(comment)">{{comment.UserSpeed}}%</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 pt-md-3">
+                    <nav id="paginate">
+                        <ul class="pagination justify-content-end fw-600">
+                            <li class="mr-auto">
+                                <form>
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                    </select>
+                                </form>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Önceki</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Sonraki</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+
+            </div>
+        </div>
+    </article>
+</section>
+
+<!-- Result Message -->
+<div id="toast" class="message show" ng-hide="visible">
+    <div class="toastInner" ng-style="setStyle()">
+        <div class="toastMessage">
+            {{message}}
+        </div>
+    </div>
+</div>
