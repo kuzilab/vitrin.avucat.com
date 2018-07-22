@@ -39,7 +39,7 @@ LawLoginCtrl.controller('LawLoginController', function ($cookieStore, $window, $
                 Auth.login(vm.loginData.Email, vm.loginData.Password, function (response) {
                     if (response.data.success) {
                         console.log(response);
-                        $window.location.href = "http://localhost:3000/"
+                        $window.location.href = "https://murmuring-sea-58048.herokuapp.com/"
                     } else {
                         vm.message = response.data.message;
                         vm.situation = response.data.situation;

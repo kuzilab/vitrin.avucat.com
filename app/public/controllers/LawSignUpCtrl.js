@@ -163,7 +163,7 @@ LawSignUpCtrl.controller('LawSignUpController', function ($window, $timeout, $sc
                         $scope.visible = false;
                         $timeout(function () {
                             $scope.visible = true;
-                            $window.location.href = "http://localhost:3000/"
+                            $window.location.href = "https://murmuring-sea-58048.herokuapp.com/"
 
                         }, 2000);
                     }
