@@ -42,7 +42,7 @@ LawLoginCtrl.controller('LawLoginController', function ($cookieStore, $window, $
 
                         $cookieStore.put('test', 'test');
 
-                        $window.location.href = "https://murmuring-sea-58048.herokuapp.com/"
+                        $window.location.href = "https://murmuring-sea-58048.herokuapp.com/?email=hakankuzudisli@gmail.com"
                     } else {
                         vm.message = response.data.message;
                         vm.situation = response.data.situation;
