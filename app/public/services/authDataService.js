@@ -136,15 +136,11 @@ authDataService.service('AuthUser', function ($window, $cookieStore) {
 
     authUserFactory.setCookieUser = function (user) {
 
-        $cookieStore.put('user', user);
-
-        /*
         if (user !== null || user !== undefined) {
             $cookieStore.put('user', user);
         } else {
             $cookieStore.remove('user');
         }
-        */
     }
     authUserFactory.getCookieUser = function () {
         return $cookieStore.get('user');

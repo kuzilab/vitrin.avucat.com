@@ -39,6 +39,9 @@ LawLoginCtrl.controller('LawLoginController', function ($cookieStore, $window, $
                 Auth.login(vm.loginData.Email, vm.loginData.Password, function (response) {
                     if (response.data.success) {
                         console.log(response);
+
+                        $window.localStorage.setItem('deneme', 'test');
+
                         $window.location.href = "https://murmuring-sea-58048.herokuapp.com/"
                     } else {
                         vm.message = response.data.message;
