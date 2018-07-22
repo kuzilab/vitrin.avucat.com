@@ -40,7 +40,7 @@ LawLoginCtrl.controller('LawLoginController', function ($cookieStore, $window, $
                     if (response.data.success) {
                         console.log(response);
 
-                        $window.localStorage.setItem('deneme', 'test');
+                        $cookieStore.put('test', 'test');
 
                         $window.location.href = "https://murmuring-sea-58048.herokuapp.com/"
                     } else {
