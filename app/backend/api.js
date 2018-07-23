@@ -31,6 +31,7 @@ var Certificate = require('./models/certificate');
 var Essay = require('./models/essay');
 var Comment = require('./models/comment');
 var Message = require('./models/message');
+var Authenticate = require('./models/authenticate');
 
 // upload methods -------------------------
 var upload = {};
@@ -45,6 +46,8 @@ auth.login = "/login";
 auth.signup = "/signup";
 auth.me = "/me";
 auth.isUser = "/isUser"
+auth.Authenticate = "/Authenticate";
+auth.UpdateAuthenticate = "/UpdateAuthenticate";
 
 
 // crud methods ---------------------------
@@ -153,6 +156,72 @@ router.post(auth.signup, function (req, res) {
     });
 });
 
+// Authenticate User -----------------------
+
+router.post(auth.Authenticate, function (req, res) {
+    var item = req.body.item;
+
+    var authenticate = new Authenticate({
+        Email: item.Email,
+        IsAuthneticated: item.IsAuthneticated,
+        PasswordPlain: item.PasswordPlain,
+        IsUser: item.IsUser
+    });
+
+    authenticate.save(function (err) {
+        if (err) {
+            res.json({
+                success: false,
+                situation: "authenticate_issue",
+                message: err
+            });
+        } else {
+            res.json({
+                success: true,
+                situation: "authenticate_created",
+                message: "Authenticate Oldu:)",
+                authenticate: authenticate
+            });
+        }
+    });
+
+});
+
+// Update Authenticate -------------------------
+router.post(auth.UpdateAuthenticate, function (req, res) {
+
+    var Email = req.body.Email;
+    var AuthenticateSituation = req.body.AuthenticateSituation;
+    var condition = {
+        "Email": Email
+    };
+    var update = {
+        $set: {
+            "IsAuthenticated": AuthenticateSituation,
+            "IsUser": true
+        }
+    }
+    var options = {
+        multi: true
+    };
+    Authenticate.update(condition, update, options, function (err, affected) {
+
+        if (err) {
+            res.json({
+                success: false,
+                situation: "update_failed",
+                message: "Authenticate Başarısız !!!",
+            });
+        } else {
+            res.json({
+                success: true,
+                situation: "update_success",
+                message: "Authenticate Başarılı",
+            });
+        }
+    });
+});
+
 
 // User Check ------------------------------
 router.post(auth.isUser, function (req, res) {
@@ -229,8 +298,6 @@ router.post(crud.getLawyersByCriticize, function (req, res) {
             });
         }
     });
-
-
 });
 
 

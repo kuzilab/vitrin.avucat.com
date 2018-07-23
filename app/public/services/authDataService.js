@@ -4,6 +4,31 @@ var authDataService = angular.module('authDataService', []);
 authDataService.service('Auth', function ($http, $q, AuthToken, AuthUser) {
 
     var authService = {};
+
+    authService.Authenticate = function (Email, PasswordPlain, callback) {
+        var item = {
+            Email: Email,
+            PasswordPlain: PasswordPlain,
+            IsAuthneticated: true,
+            IsUser: true
+        };
+        return $http.post('/api/Authenticate', {
+            item: item
+        }).then(function (response) {
+            callback(response);
+        });
+    }
+
+    authService.UpdateAuthenticate = function (Email, AuthenticateSituation, callback) {
+        return $http.post('/api/UpdateAuthenticate', {
+            Email: Email,
+            AuthenticateSituation: AuthenticateSituation
+        }).then(function (response) {
+            callback(response)
+        });
+    }
+
+
     authService.isUser = function (Email, callback) {
         return $http.post('/api/isUser', {
             Email: Email,

@@ -60,6 +60,7 @@ LawSignUpCtrl.controller('LawSignUpController', function ($window, $timeout, $sc
         IsPostLicenceSchoolName: false,
         BureauCityId: null,
         UserAppName: null,
+
     }
 
     vm.getExpertiseFields = function () {
@@ -144,45 +145,50 @@ LawSignUpCtrl.controller('LawSignUpController', function ($window, $timeout, $sc
     }
 
     vm.doSignUp = function () {
-        if (vm.signupData.LocationAddress != null) {
-
-            console.log(vm.signupData);
-
-            vm.signupData.RoutePath = globe.convertSeoPath(vm.signupData.NameSurname);
-            vm.signupData.ProcessDate = globe.getDate();
-            vm.signupData.Password = vm.signupData.PasswordPlain;
-            Auth.signup(vm.signupData, function (response) {
-                vm.processing = false;
-
-                Auth.login(vm.signupData.Email, vm.signupData.PasswordPlain, function (response) {
-                    if (response.data.success) {
-
-                        $scope.message = "Kayıt Oluşturulmuştur. Panele Yönlendiriliyorsunuz... :)";
-                        $scope.back = success;
-                        $scope.setStyle();
-                        $scope.visible = false;
-                        $timeout(function () {
-                            $scope.visible = true;
-                            $window.location.href = "https://murmuring-sea-58048.herokuapp.com/"
-
-                        }, 2000);
-                    }
-                });
-            });
-
-
-        } else {
-            $scope.message = "Konum Bilginizi Seçmelisiniz :|";
-            $scope.back = warn;
-            $scope.setStyle();
-            $scope.visible = false;
-            $timeout(function () {
-                $scope.visible = true;
-            }, 2000);
-        }
+        Auth.isUser(vm.signupData.Email, function (response) {
+            if (response.data.success) {
+                if (vm.signupData.LocationAddress != null) {
+                    console.log(vm.signupData);
+                    vm.signupData.RoutePath = globe.convertSeoPath(vm.signupData.NameSurname);
+                    vm.signupData.ProcessDate = globe.getDate();
+                    vm.signupData.Password = vm.signupData.PasswordPlain;
+                    Auth.signup(vm.signupData, function (response) {
+                        vm.processing = false;
+                        Auth.login(vm.signupData.Email, vm.signupData.PasswordPlain, function (response) {
+                            if (response.data.success) {
+                                Auth.Authenticate(vm.signupData.Email, vm.signupData.PasswordPlain, function (response) {
+                                    if (response.data.success) {
+                                        $scope.message = "Kayıt Oluşturulmuştur. Panele Yönlendiriliyorsunuz... :)";
+                                        $scope.back = success;
+                                        $scope.setStyle();
+                                        $scope.visible = false;
+                                        $timeout(function () {
+                                            $scope.visible = true;
+                                            $window.location.href = "http://localhost:3000/?Email=" + vm.signupData.Email
+                                        }, 2000);
+                                    }
+                                });
+                            }
+                        });
+                    });
+                } else {
+                    $scope.message = "Konum Bilginizi Seçmelisiniz :|";
+                    $scope.back = warn;
+                    $scope.setStyle();
+                    $scope.visible = false;
+                    $timeout(function () {
+                        $scope.visible = true;
+                    }, 2000);
+                }
+            } else {
+                $scope.message = "Kullanıcı Sistemde Mevcut :|";
+                $scope.back = warn;
+                $scope.setStyle();
+                $scope.visible = false;
+                $timeout(function () {
+                    $scope.visible = true;
+                }, 2000);
+            }
+        });
     }
-
-
-
-
 });

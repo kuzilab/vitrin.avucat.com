@@ -173,6 +173,9 @@ var UserSchema = new Schema({
     },
     UserAppName: {
         type: String
+    },
+    IsAuthenticated: {
+        type: Boolean
     }
 });
 

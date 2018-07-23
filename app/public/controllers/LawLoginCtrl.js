@@ -38,11 +38,13 @@ LawLoginCtrl.controller('LawLoginController', function ($cookieStore, $window, $
             if (!response.data.success) {
                 Auth.login(vm.loginData.Email, vm.loginData.Password, function (response) {
                     if (response.data.success) {
-                        console.log(response);
 
-                        $cookieStore.put('test', 'test');
-
-                        $window.location.href = "https://murmuring-sea-58048.herokuapp.com/?email=hakankuzudisli@gmail.com"
+                        AuthenticateSituation = true
+                        Auth.UpdateAuthenticate(vm.loginData.Email, AuthenticateSituation, function (response) {
+                            if (response.data.success) {
+                                $window.location.href = "http://localhost:3000/?Email=" + vm.loginData.Email
+                            }
+                        });
                     } else {
                         vm.message = response.data.message;
                         vm.situation = response.data.situation;
