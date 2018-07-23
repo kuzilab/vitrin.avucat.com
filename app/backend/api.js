@@ -251,7 +251,7 @@ router.post(crud.getLawyerByRoutePath, function (req, res) {
     User.findOne({
         RoutePath: RoutePath,
         UserSituation: true
-    }).select('RoutePath BureauCityId NameSurname ProfilePicPath Phone Email ExpertiseFields LatLng Lat Lng City SearchCity SearchState State Country CountryCode BureauName BureauWebName Address ExperienceYear UserWebName Biography TBBNo ADLNo BureauNo BureauCity LicenceSchoolName LicenceSchoolId LicenceSchoolDate HighLicenceSchoolName HighLicenceSchoolId HighLicenceSchoolDate PostLicenceSchoolName PostLicenceSchoolId PostLicenceSchoolDate UserKeywords ProcessDate LocationAddress').exec(function (err, lawyer) {
+    }).select('RoutePath BureauCityId NameSurname ProfilePicPath ProfileBase64Pic Phone Email ExpertiseFields LatLng Lat Lng City SearchCity SearchState State Country CountryCode BureauName BureauWebName Address ExperienceYear UserWebName Biography TBBNo ADLNo BureauNo BureauCity LicenceSchoolName LicenceSchoolId LicenceSchoolDate HighLicenceSchoolName HighLicenceSchoolId HighLicenceSchoolDate PostLicenceSchoolName PostLicenceSchoolId PostLicenceSchoolDate UserKeywords ProcessDate LocationAddress').exec(function (err, lawyer) {
 
         if (lawyer == null) {
             res.send({
@@ -281,7 +281,7 @@ router.post(crud.getLawyersByCriticize, function (req, res) {
         UserSituation: true
     };
 
-    User.find(query).select('RoutePath BureauCityId NameSurname ProfilePicPath Phone Email ExpertiseFields LatLng Lat Lng City State SearchCity SearchState Country CountryCode BureauName BureauWebName Address ExperienceYear UserWebName Biography TBBNo ADLNo BureauNo BureauCity LicenceSchoolName LicenceSchoolId LicenceSchoolDate HighLicenceSchoolName HighLicenceSchoolId HighLicenceSchoolDate PostLicenceSchoolName PostLicenceSchoolId PostLicenceSchoolDate UserKeywords ProcessDate LocationAddress').exec(function (err, lawyers) {
+    User.find(query).select('RoutePath BureauCityId NameSurname ProfilePicPath ProfileBase64Pic Phone Email ExpertiseFields LatLng Lat Lng City State SearchCity SearchState Country CountryCode BureauName BureauWebName Address ExperienceYear UserWebName Biography TBBNo ADLNo BureauNo BureauCity LicenceSchoolName LicenceSchoolId LicenceSchoolDate HighLicenceSchoolName HighLicenceSchoolId HighLicenceSchoolDate PostLicenceSchoolName PostLicenceSchoolId PostLicenceSchoolDate UserKeywords ProcessDate LocationAddress').exec(function (err, lawyers) {
 
         if (lawyers == null) {
             res.send({
