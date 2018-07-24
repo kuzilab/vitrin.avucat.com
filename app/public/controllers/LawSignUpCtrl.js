@@ -165,7 +165,7 @@ LawSignUpCtrl.controller('LawSignUpController', function ($window, $timeout, $sc
                                         $timeout(function () {
                                             $scope.visible = true;
                                             //  $window.location.href = "http://localhost:3000/?Email=" + vm.signupData.Email
-                                            $window.location.href = "https://murmuring-sea-58048.herokuapp.com/?Email=" + vm.loginData.Email
+                                            $window.location.href = "https://panel-avucat-com.herokuapp.com/?Email=" + vm.loginData.Email
                                         }, 2000);
                                     }
                                 });
