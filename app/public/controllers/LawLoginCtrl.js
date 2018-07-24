@@ -42,8 +42,8 @@ LawLoginCtrl.controller('LawLoginController', function ($cookieStore, $window, $
                         AuthenticateSituation = true
                         Auth.UpdateAuthenticate(vm.loginData.Email, AuthenticateSituation, function (response) {
                             if (response.data.success) {
-                                //     $window.location.href = "http://localhost:3000/?Email=" + vm.loginData.Email
-                                $window.location.href = "https://panel-avucat-com.herokuapp.com/?Email=" + vm.loginData.Email
+                                $window.location.href = "http://localhost:3000/?Email=" + vm.loginData.Email
+                                // $window.location.href = "https://panel-avucat-com.herokuapp.com/?Email=" + vm.loginData.Email
 
 
                             }
