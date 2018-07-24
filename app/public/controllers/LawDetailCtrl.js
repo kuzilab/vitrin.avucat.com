@@ -29,6 +29,15 @@ LawDetailCtrl.controller('LawDetailController', function ($window, $scope, $root
             if (response.data.success) {
                 $scope.lawyers = response.data.lawyers;
                 angular.forEach($scope.lawyers, function (item) {
+
+
+                    if (item.ProfileBase64Pic == undefined) {
+                        item.ProfileBase64Pic = "../assets/img/user.png";
+                    } else {
+                        item.ProfileBase64Pic = item.ProfileBase64Pic;
+                    }
+
+
                     var expertises = item.ExpertiseFields;
                     item.FieldTextList = [];
                     for (var i = 0; i < expertises.length; i++) {

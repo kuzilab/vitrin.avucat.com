@@ -52,6 +52,12 @@ MainPageCtrl.controller('MainPageController', function ($timeout, $scope, $rootS
             $rootScope.lawyers = response.data.lawyers;
             console.log($rootScope.lawyers);
             angular.forEach($rootScope.lawyers, function (item) {
+
+                if (item.ProfileBase64Pic == undefined) {
+                    item.ProfileBase64Pic = "../assets/img/user.png";
+                } else {
+                    item.ProfileBase64Pic = item.ProfileBase64Pic;
+                }
                 var expertises = item.ExpertiseFields;
                 item.FieldTextList = [];
                 for (var i = 0; i < expertises.length; i++) {
