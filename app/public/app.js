@@ -11,16 +11,12 @@ app.run(function ($rootScope, $location) {
 
         var path = $location.path();
         // Gecici Çözüm --- :((
-        if (path == "/" || path == "/avukat-arama" || path.includes("yorumlar")) {
+        if (path == "/" || path == "/avukat-arama" || path.includes("yorumlar") || path.includes("/avukat-kayit-ol")) {
             console.log("iceriyorum");
             $rootScope.$on('$viewContentLoaded', function () {
                 Initializer();
             });
         }
-
-
-
-
 
     });
 });

@@ -197,7 +197,7 @@ router.post(auth.UpdateAuthenticate, function (req, res) {
     };
     var update = {
         $set: {
-            "IsAuthenticated": AuthenticateSituation,
+            "IsAuthneticated": AuthenticateSituation,
             "IsUser": true
         }
     }
@@ -348,7 +348,7 @@ router.post(crud.getCertificates, function (req, res) {
     Certificate.find({
         UserId: UserId,
         CertificateSituation: true
-    }).select('_id UserId CertificateFileName CertificateFilePath FileType ThumbnailType CertificateSituation SavedDate').exec(function (err, certificates) {
+    }).select('_id UserId CertificateFileName CertificateFilePath FileType ThumbnailType CertificateSituation ProfileBase64Pic SavedDate').exec(function (err, certificates) {
 
         if (certificates !== null) {
             res.json({

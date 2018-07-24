@@ -35,6 +35,7 @@
                                             placeholder="Şifreniz (*)" required />
                                     </div>
                                     <p ng-hide="Form.Password.$valid" class="invalid-feedback">Şifre Giriniz!</p>
+                                    <p ng-if="Form.Password.$valid" class="valid-feedback">Şifre Geçerli :)</p>
 
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="loginRemember" ng-model="login.loginData.RememberMe" />

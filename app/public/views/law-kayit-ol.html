@@ -31,9 +31,9 @@
 
                                         <div class="col-sm-12 py-2">
                                             <label for="formUzmanlikAlanlari">Uzmanlık Alanları</label>
-                                            <select id="formUzmanlikAlanlari" class="form-control-lg form-control " name="ExpertiseField" ng-model="signup.signupData.ExpertiseFields"
+                                            <select id="formUzmanlikAlanlari" class="form-control-lg form-control" name="ExpertiseField" ng-model="signup.signupData.ExpertiseFields"
                                                 title="Uzmanlık seçiniz" data-size="6" data-max-options="3" data-selected-text-format="count > 2"
-                                                ng-change="signup.getExpertiseFields()" multiple required>
+                                                data-tagging data-create="false" ng-change="signup.getExpertiseFields()" required>
                                                 <option ng-repeat="expertise in expertises track by $index" ng-value="expertise.id">{{expertise.name}}</option>
                                             </select>
                                             <p ng-hide="Form.ExpertiseField.$valid" class="invalid-feedback">Uzmanlık Giriniz!</p>

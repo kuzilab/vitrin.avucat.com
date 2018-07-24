@@ -28,7 +28,6 @@ authDataService.service('Auth', function ($http, $q, AuthToken, AuthUser) {
         });
     }
 
-
     authService.isUser = function (Email, callback) {
         return $http.post('/api/isUser', {
             Email: Email,

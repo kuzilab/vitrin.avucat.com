@@ -50,6 +50,7 @@ MainPageCtrl.controller('MainPageController', function ($timeout, $scope, $rootS
     CrudData.getLawyersByCriticize(item, function (response) {
         if (response.data.success) {
             $rootScope.lawyers = response.data.lawyers;
+            console.log($rootScope.lawyers);
             angular.forEach($rootScope.lawyers, function (item) {
                 var expertises = item.ExpertiseFields;
                 item.FieldTextList = [];
